@@ -53,17 +53,27 @@ result_label.grid(row=2, column=1, pady=20)
 # ----------------------- Game Function -----------------------
 def play(choice):
     computer = random.choice(["rock", "paper", "scissors"])
-    
+    self.round_count += 1
+
     player_img.config(image=image_map[choice])
     computer_img.config(image=image_map[computer])
 
     result = determine_winner(choice, computer)
     result_label.config(text=f"Computer: {computer.capitalize()} | {result}")
 
+ # Score and Round Labels
+        self.score_label = Label(self.root, text=f"You: {self.player_score}  |  Computer: {self.computer_score}", 
+                                 font=("Helvetica", 16), bg='white')
+        self.score_label.grid(row=4, column=1, pady=10
 # Buttons
 Button(root, text="Rock", command=lambda: play("rock"), width=12, height=2).grid(row=3, column=0, pady=20, padx=10)
 Button(root, text="Paper", command=lambda: play("paper"), width=12, height=2).grid(row=3, column=1, pady=20, padx=10)
 Button(root, text="Scissors", command=lambda: play("scissors"), width=12, height=2).grid(row=3, column=2, pady=20, padx=10)
+
+
+ # Reset Button
+        self.reset_button = Button(root, text="Reset Game", command=self.reset_game, width=12, height=2, state=tk.DISABLED)
+        self.reset_button.grid(row=3, column=0, pady=20)
 
 # Start the app
 root.mainloop()
