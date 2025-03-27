@@ -141,17 +141,36 @@ def choose_mode():
     score_label.config(text="Scoreboard")
     
     def start_single_player():
+        global player_score, computer_score, round_count
         clear_buttons()
+
+        # Reset single-player scores
+        player_score = 0
+        computer_score = 0
+        round_count = 0
+
         # Buttons for single-player
         result_label.config(text="Choose Rock, Paper, Scissors")
+        score_label.config(text=f"You: {player_score}  |  Computer:  {computer_score}")
+
+
         Button(root, text="Rock", command=lambda: play_single("rock"), width=12, height=2).grid(row=4, column=0, pady=20, padx=10)
         Button(root, text="Paper", command=lambda: play_single("paper"), width=12, height=2).grid(row=4, column=1, pady=20, padx=10)
         Button(root, text="Scissors", command=lambda: play_single("scissors"), width=12, height=2).grid(row=4, column=2, pady=20, padx=10)
 
     def start_multiplayer():
+        global player1_score, player2_score
         clear_buttons()
-        # Buttons for multiplayer
+
+        # Reset multiplayer scores
+        player1_score = 0
+        player2_score = 0
         result_label.config(text="Player 1, make your choice!")
+        player1_score_label.config(text=f"Player 1: {player1_score}")
+        player2_score_label.config(text=f"Player 2: {player2_score}")
+
+        # Buttons for multiplayer
+       
         Button(root, text="Rock", command=lambda: play_multiplayer("rock"), width=12, height=2).grid(row=3, column=0, pady=20, padx=10)
         Button(root, text="Paper", command=lambda: play_multiplayer("paper"), width=12, height=2).grid(row=3, column=1, pady=20, padx=10)
         Button(root, text="Scissors", command=lambda: play_multiplayer("scissors"), width=12, height=2).grid(row=3, column=2, pady=20, padx=10)
