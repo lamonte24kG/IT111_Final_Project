@@ -132,9 +132,9 @@ def play_multiplayer(player1_choice):
 
 def show_player1_buttons():
     clear_buttons(rows=[4])
-    Button(root, text="Rock", command=lambda: play_multiplayer("rock"), width=12, height=2).grid(row=3, column=0, pady=20, padx=10)
-    Button(root, text="Paper", command=lambda: play_multiplayer("paper"), width=12, height=2).grid(row=3, column=1, pady=20, padx=10)
-    Button(root, text="Scissors", command=lambda: play_multiplayer("scissors"), width=12, height=2).grid(row=3, column=2, pady=20, padx=10)
+    Button(root, text="Rock", command=lambda: play_multiplayer("rock"), width=12, height=2).grid(row=4, column=0, pady=20, padx=10)
+    Button(root, text="Paper", command=lambda: play_multiplayer("paper"), width=12, height=2).grid(row=4, column=1, pady=20, padx=10)
+    Button(root, text="Scissors", command=lambda: play_multiplayer("scissors"), width=12, height=2).grid(row=4, column=2, pady=20, padx=10)
 
 # ----------------------- Mode Selection -------------------------
 def choose_mode():
@@ -166,14 +166,17 @@ def choose_mode():
     def start_multiplayer():
         global player1_score, player2_score
         clear_buttons()
+
+        #Show all multiplayer labels
         player1_label.grid()
         player2_label.grid()
+        score_label.config(text=f"Player 1: {player1_score}  |  Player 2:  {player2_score}")
+        
         player1_score = 0
         player2_score = 0
+        score_label.config(text="Scoreboard")
         result_label.config(text="Player 1, make your choice!")
-        player1_score_label.config(text=f"Player 1: {player1_score}")
-        player2_score_label.config(text=f"Player 2: {player2_score}")
-
+        
         show_player1_buttons()
         show_play_again_button()
 
